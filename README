@@ -1,0 +1,11 @@
+The issues with the original code for myFirst.js File were:
+
+- The work function that is called in app.get('/', work(req, res)); was not defined.
+- The username and secretPhrase variables were not properly defined with var keyword.
+- There was an unexpected else statement in the conn.bulk.load() function that was not preceded by an if statement.
+- The http.createServer() function was called with tune instead of listen.
+I fixed these issues.
+
+The issues with the original code for App.js File Were:
+
+The records variable is declared inside the conn.login() callback function, and the query to retrieve the records is also inside the same function. Now the conn variable is in the scope of the records query, and the code should work as expected.

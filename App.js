@@ -20,6 +20,16 @@ app.get('/', function (req, res) {
 		console.log("User ID: " + userInfo.id);
 		console.log("Org ID: " + userInfo.organizationId);
 		res.send('heySalesforce : JSForce Connect Successed!');
+
+		var records = [];
+		conn.query("SELECT Id, Name FROM Account", function (err, result) {
+			if (err) { return console.error(err); }
+			console.log("total : " + result.totalSize);
+			console.log("fetched : " + result.records.length);
+			records = result.records;
+			console.log(records);
+		});
+
 	});
 });
 
@@ -27,15 +37,3 @@ app.get('/', function (req, res) {
 http.createServer(app).listen(app.get('port'), function () {
 	console.log('Express server listening on port ' + app.get('port'));
 });
-
-var records = [];
-
-conn.query("SELECT Id, Name FROM Account", function (err, result) {
-
-	return console.error(err);
-
-	console.log("total : " + result.totalSize);
-
-	console.log("fetched : " + result.records.length);
-
-})
